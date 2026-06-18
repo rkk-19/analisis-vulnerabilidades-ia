@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análisis de Riesgos con Nmap y CVSS 3.1</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f5f5f5;
+    padding:30px;
+}
+
+.container{
+    background:white;
+    max-width:900px;
+    margin:auto;
+    padding:25px;
+    border:1px solid #ccc;
+}
+
+h1{
+    color:#1d2b44;
+    border-bottom:3px solid red;
+    padding-bottom:10px;
+}
+
+textarea{
+    width:100%;
+    height:250px;
+    padding:10px;
+}
+
+button{
+    width:100%;
+    background:#e31b23;
+    color:white;
+    border:none;
+    padding:15px;
+    font-size:16px;
+    cursor:pointer;
+    margin-top:15px;
+}
+
+button:hover{
+    background:#c5161d;
+}
+
+#resultado{
+    margin-top:20px;
+    background:#eef5ff;
+    padding:15px;
+    border-radius:5px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Análisis de Riesgos con Nmap y CVSS 3.1</h1>
+
+<p>Pega la salida del escaneo Nmap para identificar vulnerabilidades.</p>
+
+<textarea id="nmap"></textarea>
+
+<button onclick="analizar()">🚀 Analizar y Clasificar Riesgos (Top 5)</button>
+
+<div id="resultado"></div>
+
+</div>
+
+<script>
+
+function analizar(){
+
+let texto=document.getElementById("nmap").value;
+
+let resultado=`
+<h2>TOP 5 Vulnerabilidades</h2>
+
+<ol>
+
+<li>
+<b>MS17-010 (EternalBlue)</b><br>
+Riesgo: CRÍTICO<br>
+CVSS: 9.8<br>
+Mitigación: Aplicar parche MS17-010 y deshabilitar SMBv1.
+</li><br>
+
+<li>
+<b>Tomcat RCE (CVE-2017-12617)</b><br>
+Riesgo: CRÍTICO<br>
+Mitigación: Actualizar Apache Tomcat.
+</li><br>
+
+<li>
+<b>VSFTPD Backdoor (CVE-2011-2523)</b><br>
+Riesgo: CRÍTICO<br>
+Mitigación: Actualizar VSFTPD y eliminar acceso anónimo.
+</li><br>
+
+<li>
+<b>MySQL Privilege Escalation (CVE-2016-6662)</b><br>
+Riesgo: ALTO<br>
+Mitigación: Actualizar MySQL.
+</li><br>
+
+<li>
+<b>Apache mod_rewrite (CVE-2019-10098)</b><br>
+Riesgo: ALTO<br>
+Mitigación: Actualizar Apache.
+</li>
+
+</ol>
+
+<h3>Vulnerabilidad Más Crítica</h3>
+
+<p>
+<b>MS17-010 (EternalBlue)</b><br>
+CVSS 3.1: 9.8 CRÍTICO<br>
+Vector:
+CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H
+</p>
+`;
+
+document.getElementById("resultado").innerHTML=resultado;
+
+}
+
+</script>
+
+</body>
+</html>
